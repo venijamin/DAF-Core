@@ -15,8 +15,10 @@ func main() {
 	SetRoutes(router)          // Set the HTTP routes
 	corsRouter := CORS(router) // Wrap the router with CORS middleware
 
+	InitData()
 	// Start the server
 	log.Fatal(http.ListenAndServe(":8080", corsRouter))
+
 }
 
 func SetRoutes(router *mux.Router) {

@@ -1,12 +1,12 @@
 package model
 
 type Board struct {
-	BoardUUID string `json:"board_uuid" gorm:"primaryKey"`
+	BoardUUID string `gorm:"primaryKey;type:uuid"`
 
-	ThemeUUID string `json:"theme_uuid"`
+	ThemeUUID string `gorm:"type:uuid"`
 	Theme     Theme  `gorm:"foreignKey:ThemeUUID;references:ThemeUUID"`
 
 	Items []Item `gorm:"foreignKey:BoardUUID;references:BoardUUID"`
 
-	Name string `json:"name"`
+	Name string
 }

@@ -1,18 +1,18 @@
 package model
 
 type Item struct {
-	ItemUUID string `json:"item_uuid" gorm:"primaryKey"`
+	ItemUUID string `gorm:"primaryKey;type:uuid"`
 
-	ParentID *string
-	Items    []Item `gorm:"foreignKey:ParentID;references:ItemUUID"`
+	ParentUUID string `gorm:"type:uuid"`
+	Items      []Item `gorm:"foreignKey:ParentUUID;references:ItemUUID"`
 
-	BoardUUID string `json:"board_uuid"`
+	BoardUUID string `gorm:"type:uuid"`
 
-	Name        string   `json:"name"`
-	Description string   `json:"description"`
-	Quantity    int      `json:"quantity"`
+	Name        string
+	Description string
+	Quantity    int
 	Tags        []string `gorm:"type:text[]"`
-	Picture     string   `json:"picture"`
-	Barcode     string   `json:"barcode"`
+	Picture     string
+	Barcode     string
 	Fields      []string `gorm:"type:text[]"`
 }
