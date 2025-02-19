@@ -1,11 +1,11 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64; rv:135.0) Gecko/20100101 Firefox/135.0" version="26.0.14">
+<mxfile host="drawio-plugin" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" modified="2025-02-19T10:52:27.694Z" version="22.1.22" etag="msoUXCsxrXwQZr8RtVTM" type="embed">
   <diagram name="Page-1" id="vnmwI-xQ0mRfC60lx_vi">
-    <mxGraphModel dx="3300" dy="2183" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2742" dy="1846" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="s_LSaBDmb_ivbx3u3UzG-1" value="User" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="-495" y="290" width="140" height="120" as="geometry" />
+          <mxGeometry x="-495" y="310" width="140" height="120" as="geometry" />
         </mxCell>
         <mxCell id="s_LSaBDmb_ivbx3u3UzG-2" value="&lt;div&gt;username&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontStyle=1" parent="s_LSaBDmb_ivbx3u3UzG-1" vertex="1">
           <mxGeometry y="30" width="140" height="30" as="geometry" />
@@ -47,10 +47,10 @@
           <mxGeometry y="270" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="a4jcbPwt1ojCjgaN_IQJ-14" value="Each user has their own Barcode Table where they can keep barcodes of &lt;br&gt;different items, so that when they scan the item again it automatically &lt;br&gt;&lt;div&gt;gets added&lt;/div&gt;&lt;div&gt;This is technically legal. So I can save the barcodes by having the user generate the item by themselves, or even find the item online and attach a barcode to it.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;fillStyle=auto;shadow=0;glass=0;fontSize=13;fontStyle=1;labelPosition=center;verticalLabelPosition=middle;verticalAlign=middle;fontColor=default;textOpacity=60;spacing=20;spacingTop=0;spacingBottom=0;spacingLeft=0;fontFamily=Monaspace Argon;fontSource=https%3A%2F%2Fonline-fonts.com%2Ffonts%2Fmonaspace-argon;collapsible=0;container=1;portConstraint=none;autosize=0;fixedWidth=0;resizable=1;" parent="1" vertex="1">
-          <mxGeometry x="-440" y="-210" width="280" height="220" as="geometry" />
+          <mxGeometry x="-500" y="-210" width="340" height="270" as="geometry" />
         </mxCell>
         <mxCell id="a4jcbPwt1ojCjgaN_IQJ-15" value="&lt;div align=&quot;center&quot;&gt;&lt;b&gt;&lt;font data-font-src=&quot;https://online-fonts.com/fonts/monaspace-argon&quot; face=&quot;Monaspace Argon&quot;&gt;&lt;span&gt;NOTE&lt;/span&gt;&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=0" parent="a4jcbPwt1ojCjgaN_IQJ-14" vertex="1">
-          <mxGeometry width="60" height="30" as="geometry" />
+          <mxGeometry width="72.85714285714285" height="36.81818181818182" as="geometry" />
         </mxCell>
         <mxCell id="a4jcbPwt1ojCjgaN_IQJ-16" value="&lt;div&gt;Fields can be booleans&lt;/div&gt;&lt;div&gt;Checkboxes&lt;/div&gt;&lt;div&gt;Radio buttons&lt;/div&gt;&lt;div&gt;Input fields&lt;/div&gt;&lt;div&gt;Select field&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;fillStyle=auto;shadow=0;glass=0;fontSize=13;fontStyle=1;labelPosition=center;verticalLabelPosition=middle;verticalAlign=middle;fontColor=default;textOpacity=60;spacing=20;spacingTop=0;spacingBottom=0;spacingLeft=0;fontFamily=Monaspace Argon;fontSource=https%3A%2F%2Fonline-fonts.com%2Ffonts%2Fmonaspace-argon;collapsible=0;container=1;portConstraint=none;autosize=0;fixedWidth=0;resizable=1;" parent="1" vertex="1">
           <mxGeometry x="510" y="-80" width="280" height="220" as="geometry" />
@@ -62,10 +62,10 @@
           <mxGeometry x="-90" y="-24.55000000000001" width="24" height="29.099999999999998" as="geometry" />
         </mxCell>
         <mxCell id="a4jcbPwt1ojCjgaN_IQJ-20" value="&lt;div&gt;Items can have Items inside of them so it goes recursively&lt;/div&gt;&lt;div&gt;For example we want to make a grocery shopping list and a recipe board. The recipes which are items have ingredients which are also items&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;fillStyle=auto;shadow=0;glass=0;fontSize=13;fontStyle=1;labelPosition=center;verticalLabelPosition=middle;verticalAlign=middle;fontColor=default;textOpacity=60;spacing=20;spacingTop=0;spacingBottom=0;spacingLeft=0;fontFamily=Monaspace Argon;fontSource=https%3A%2F%2Fonline-fonts.com%2Ffonts%2Fmonaspace-argon;collapsible=0;container=1;portConstraint=none;autosize=0;fixedWidth=0;resizable=1;" parent="1" vertex="1">
-          <mxGeometry x="520" y="210" width="270" height="170" as="geometry" />
+          <mxGeometry x="520" y="210" width="270" height="190" as="geometry" />
         </mxCell>
         <mxCell id="a4jcbPwt1ojCjgaN_IQJ-21" value="&lt;div align=&quot;center&quot;&gt;&lt;b&gt;&lt;font data-font-src=&quot;https://online-fonts.com/fonts/monaspace-argon&quot; face=&quot;Monaspace Argon&quot;&gt;&lt;span&gt;NOTE&lt;/span&gt;&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=0" parent="a4jcbPwt1ojCjgaN_IQJ-20" vertex="1">
-          <mxGeometry width="57.857142857142854" height="23.18181818181818" as="geometry" />
+          <mxGeometry width="57.857142857142854" height="25.909090909090907" as="geometry" />
         </mxCell>
         <mxCell id="a4jcbPwt1ojCjgaN_IQJ-22" value="&lt;div&gt;Have pre made boards like groceries and household stuff&lt;/div&gt;&lt;div&gt;each board should have a seperate barcode database&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;fillStyle=auto;shadow=0;glass=0;fontSize=13;fontStyle=1;labelPosition=center;verticalLabelPosition=middle;verticalAlign=middle;fontColor=default;textOpacity=60;spacing=20;spacingTop=0;spacingBottom=0;spacingLeft=0;fontFamily=Monaspace Argon;fontSource=https%3A%2F%2Fonline-fonts.com%2Ffonts%2Fmonaspace-argon;collapsible=0;container=1;portConstraint=none;autosize=0;fixedWidth=0;resizable=1;" parent="1" vertex="1">
           <mxGeometry x="510" y="460" width="280" height="220" as="geometry" />
@@ -89,7 +89,7 @@
           <mxGeometry x="-300" y="200" width="165" height="80" as="geometry" />
         </mxCell>
         <mxCell id="a4jcbPwt1ojCjgaN_IQJ-40" value="BoardSettings" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="10" y="880" width="140" height="120" as="geometry" />
+          <mxGeometry x="10" y="790" width="140" height="120" as="geometry" />
         </mxCell>
         <mxCell id="a4jcbPwt1ojCjgaN_IQJ-41" value="Background" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="a4jcbPwt1ojCjgaN_IQJ-40" vertex="1">
           <mxGeometry y="30" width="140" height="30" as="geometry" />
@@ -152,45 +152,45 @@
           <mxGeometry y="90" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="a4jcbPwt1ojCjgaN_IQJ-111" value="UserSettings" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="-495" y="570" width="140" height="60" as="geometry" />
+          <mxGeometry x="-495" y="550" width="140" height="60" as="geometry" />
         </mxCell>
         <mxCell id="a4jcbPwt1ojCjgaN_IQJ-112" value="DarkMode:bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="a4jcbPwt1ojCjgaN_IQJ-111" vertex="1">
           <mxGeometry y="30" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="WZIUG7Mhky3QRmYVXI-O-1" value="&amp;nbsp;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="WZIUG7Mhky3QRmYVXI-O-1" value="&amp;nbsp;" style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-340" y="80" width="40" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="WZIUG7Mhky3QRmYVXI-O-2" value="BoardData" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="10" y="740" width="140" height="90" as="geometry" />
+        <mxCell id="WZIUG7Mhky3QRmYVXI-O-2" value="BoardData" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="10" y="700" width="140" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="WZIUG7Mhky3QRmYVXI-O-3" value="Items[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="WZIUG7Mhky3QRmYVXI-O-2">
+        <mxCell id="WZIUG7Mhky3QRmYVXI-O-3" value="Items[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="WZIUG7Mhky3QRmYVXI-O-2" vertex="1">
           <mxGeometry y="30" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="WZIUG7Mhky3QRmYVXI-O-7" value="BoardSettings" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="WZIUG7Mhky3QRmYVXI-O-2">
+        <mxCell id="WZIUG7Mhky3QRmYVXI-O-7" value="BoardSettings" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="WZIUG7Mhky3QRmYVXI-O-2" vertex="1">
           <mxGeometry y="60" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="WZIUG7Mhky3QRmYVXI-O-8" value="AlertService" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="WZIUG7Mhky3QRmYVXI-O-8" value="AlertService" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-220" y="450" width="165" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="WZIUG7Mhky3QRmYVXI-O-20" value="Item Table" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.data;" vertex="1" parent="1">
+        <mxCell id="WZIUG7Mhky3QRmYVXI-O-20" value="Item Table" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.data;" parent="1" vertex="1">
           <mxGeometry x="30" y="-24.55000000000001" width="24" height="29.099999999999998" as="geometry" />
         </mxCell>
-        <mxCell id="WZIUG7Mhky3QRmYVXI-O-33" value="Essentually we have some default variables and then Fields&amp;lt;Key,Value&amp;gt; pairs which are here to add additional fields to the item" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;fillStyle=auto;shadow=0;glass=0;fontSize=13;fontStyle=1;labelPosition=center;verticalLabelPosition=middle;verticalAlign=middle;fontColor=default;textOpacity=60;spacing=20;spacingTop=0;spacingBottom=0;spacingLeft=0;fontFamily=Monaspace Argon;fontSource=https%3A%2F%2Fonline-fonts.com%2Ffonts%2Fmonaspace-argon;collapsible=0;container=1;portConstraint=none;autosize=0;fixedWidth=0;resizable=1;" vertex="1" parent="1">
+        <mxCell id="WZIUG7Mhky3QRmYVXI-O-33" value="Essentually we have some default variables and then Fields&amp;lt;Key,Value&amp;gt; pairs which are here to add additional fields to the item" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;fillStyle=auto;shadow=0;glass=0;fontSize=13;fontStyle=1;labelPosition=center;verticalLabelPosition=middle;verticalAlign=middle;fontColor=default;textOpacity=60;spacing=20;spacingTop=0;spacingBottom=0;spacingLeft=0;fontFamily=Monaspace Argon;fontSource=https%3A%2F%2Fonline-fonts.com%2Ffonts%2Fmonaspace-argon;collapsible=0;container=1;portConstraint=none;autosize=0;fixedWidth=0;resizable=1;" parent="1" vertex="1">
           <mxGeometry x="280" y="-320" width="280" height="220" as="geometry" />
         </mxCell>
-        <mxCell id="WZIUG7Mhky3QRmYVXI-O-34" value="&lt;div align=&quot;center&quot;&gt;&lt;b&gt;&lt;font data-font-src=&quot;https://online-fonts.com/fonts/monaspace-argon&quot; face=&quot;Monaspace Argon&quot;&gt;&lt;span&gt;NOTE&lt;/span&gt;&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=0" vertex="1" parent="WZIUG7Mhky3QRmYVXI-O-33">
+        <mxCell id="WZIUG7Mhky3QRmYVXI-O-34" value="&lt;div align=&quot;center&quot;&gt;&lt;b&gt;&lt;font data-font-src=&quot;https://online-fonts.com/fonts/monaspace-argon&quot; face=&quot;Monaspace Argon&quot;&gt;&lt;span&gt;NOTE&lt;/span&gt;&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=0" parent="WZIUG7Mhky3QRmYVXI-O-33" vertex="1">
           <mxGeometry width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="WZIUG7Mhky3QRmYVXI-O-36" value="&lt;div&gt;In addition to the basic CRUD services for each of the entities&lt;/div&gt;&lt;div&gt;we will need &lt;br&gt;UserAuthenticaion&lt;/div&gt;&lt;div&gt;Alert&lt;/div&gt;&lt;div&gt;Camera&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;fillStyle=auto;shadow=0;glass=0;fontSize=13;fontStyle=1;labelPosition=center;verticalLabelPosition=middle;verticalAlign=middle;fontColor=default;textOpacity=60;spacing=20;spacingTop=0;spacingBottom=0;spacingLeft=0;fontFamily=Monaspace Argon;fontSource=https%3A%2F%2Fonline-fonts.com%2Ffonts%2Fmonaspace-argon;collapsible=0;container=1;portConstraint=none;autosize=0;fixedWidth=0;resizable=1;" vertex="1" parent="1">
+        <mxCell id="WZIUG7Mhky3QRmYVXI-O-36" value="&lt;div&gt;In addition to the basic CRUD services for each of the entities&lt;/div&gt;&lt;div&gt;we will need &lt;br&gt;UserAuthenticaion&lt;/div&gt;&lt;div&gt;Alert&lt;/div&gt;&lt;div&gt;Camera&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;fillStyle=auto;shadow=0;glass=0;fontSize=13;fontStyle=1;labelPosition=center;verticalLabelPosition=middle;verticalAlign=middle;fontColor=default;textOpacity=60;spacing=20;spacingTop=0;spacingBottom=0;spacingLeft=0;fontFamily=Monaspace Argon;fontSource=https%3A%2F%2Fonline-fonts.com%2Ffonts%2Fmonaspace-argon;collapsible=0;container=1;portConstraint=none;autosize=0;fixedWidth=0;resizable=1;" parent="1" vertex="1">
           <mxGeometry x="-90" y="185" width="280" height="220" as="geometry" />
         </mxCell>
-        <mxCell id="WZIUG7Mhky3QRmYVXI-O-37" value="&lt;div align=&quot;center&quot;&gt;&lt;b&gt;&lt;font data-font-src=&quot;https://online-fonts.com/fonts/monaspace-argon&quot; face=&quot;Monaspace Argon&quot;&gt;&lt;span&gt;NOTE&lt;/span&gt;&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=0" vertex="1" parent="WZIUG7Mhky3QRmYVXI-O-36">
+        <mxCell id="WZIUG7Mhky3QRmYVXI-O-37" value="&lt;div align=&quot;center&quot;&gt;&lt;b&gt;&lt;font data-font-src=&quot;https://online-fonts.com/fonts/monaspace-argon&quot; face=&quot;Monaspace Argon&quot;&gt;&lt;span&gt;NOTE&lt;/span&gt;&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=0" parent="WZIUG7Mhky3QRmYVXI-O-36" vertex="1">
           <mxGeometry width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="WZIUG7Mhky3QRmYVXI-O-40" value="This is just going to be a web app. Written in go and whatever framework I find easy at the time." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;fillStyle=auto;shadow=0;glass=0;fontSize=13;fontStyle=1;labelPosition=center;verticalLabelPosition=middle;verticalAlign=middle;textOpacity=60;spacing=20;spacingTop=0;spacingBottom=0;spacingLeft=0;fontFamily=Monaspace Argon;fontSource=https%3A%2F%2Fonline-fonts.com%2Ffonts%2Fmonaspace-argon;collapsible=0;container=1;portConstraint=none;autosize=0;fixedWidth=0;resizable=1;" vertex="1" parent="1">
+        <mxCell id="WZIUG7Mhky3QRmYVXI-O-40" value="This is just going to be a web app. Written in go and whatever framework I find easy at the time." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;fillStyle=auto;shadow=0;glass=0;fontSize=13;fontStyle=1;labelPosition=center;verticalLabelPosition=middle;verticalAlign=middle;textOpacity=60;spacing=20;spacingTop=0;spacingBottom=0;spacingLeft=0;fontFamily=Monaspace Argon;fontSource=https%3A%2F%2Fonline-fonts.com%2Ffonts%2Fmonaspace-argon;collapsible=0;container=1;portConstraint=none;autosize=0;fixedWidth=0;resizable=1;" parent="1" vertex="1">
           <mxGeometry x="-1040" y="-150" width="280" height="220" as="geometry" />
         </mxCell>
-        <mxCell id="WZIUG7Mhky3QRmYVXI-O-41" value="INFO" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="WZIUG7Mhky3QRmYVXI-O-40">
+        <mxCell id="WZIUG7Mhky3QRmYVXI-O-41" value="INFO" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" parent="WZIUG7Mhky3QRmYVXI-O-40" vertex="1">
           <mxGeometry width="60" height="30" as="geometry" />
         </mxCell>
       </root>
