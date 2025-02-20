@@ -1,6 +1,7 @@
 package main
 
 import (
+	"DAF-Core/app/api"
 	"DAF-Core/app/util"
 	"github.com/gorilla/mux"
 	"html/template"
@@ -19,6 +20,22 @@ func main() {
 	// Start the server
 	log.Fatal(http.ListenAndServe(":8080", corsRouter))
 
+}
+
+// CORS middleware function
+func CORS(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+
+		// Handle preflight OPTIONS request
+		if r.Method == http.MethodOptions {
+			return
+		}
+
+		next.ServeHTTP(w, r)
+	})
 }
 
 func SetRoutes(router *mux.Router) {
@@ -42,20 +59,6 @@ func SetRoutes(router *mux.Router) {
 		}
 		tmpl.Execute(w, nil)
 	})
-}
-
-// CORS middleware function
-func CORS(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
-		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
-
-		// Handle preflight OPTIONS request
-		if r.Method == http.MethodOptions {
-			return
-		}
-
-		next.ServeHTTP(w, r)
-	})
+	router.HandleFunc("/api/boards", api.GetAllBoards)
+	router.HandleFunc("/api/{board_uuid}", api.GetAllItemsByBoard)
 }

@@ -9,14 +9,20 @@ import (
 
 type ItemRepository struct{}
 
+func (r ItemRepository) GetAllByBoard(boardUUID string) []model.Item {
+	var items []model.Item
+	util.GetMainDB().Find(&items, "board_uuid = ?", boardUUID)
+	return items
+}
 func (r ItemRepository) Get(uuid string) model.Item {
 	var item model.Item
 	util.GetMainDB().Where("item_uuid = ?", uuid).First(&item)
 	return item
 }
-func (r ItemRepository) Create(dto dto.CreateItem) {
+func (r ItemRepository) Create(dto dto.CreateItem) string {
+	itemUUID := uuid.NewString()
 	item := model.Item{
-		ItemUUID:    uuid.NewString(),
+		ItemUUID:    itemUUID,
 		ParentUUID:  dto.ParentUUID,
 		BoardUUID:   dto.BoardUUID,
 		Name:        dto.Name,
@@ -28,6 +34,7 @@ func (r ItemRepository) Create(dto dto.CreateItem) {
 		Fields:      dto.Fields,
 	}
 	util.GetMainDB().Create(&item)
+	return itemUUID
 }
 func (r ItemRepository) Update(dto dto.CreateItem, uuid string) {
 	item := model.Item{

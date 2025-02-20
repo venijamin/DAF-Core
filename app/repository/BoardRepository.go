@@ -9,19 +9,26 @@ import (
 
 type BoardRepository struct{}
 
+func (r BoardRepository) GetAll() []model.Board {
+	var boards []model.Board
+	util.GetMainDB().Find(&boards)
+	return boards
+}
+
 func (r BoardRepository) Get(uuid string) model.Board {
 	var board model.Board
 	util.GetMainDB().Where("board_uuid = ?", uuid).First(&board)
 	return board
 }
-
-func (r BoardRepository) Create(dto dto.CreateBoard) {
+func (r BoardRepository) Create(dto dto.CreateBoard) string {
+	boardUUID := uuid.NewString()
 	board := model.Board{
-		BoardUUID: uuid.NewString(),
+		BoardUUID: boardUUID,
 		ThemeUUID: dto.ThemeUUID,
 		Name:      dto.Name,
 	}
 	util.GetMainDB().Create(&board)
+	return boardUUID
 }
 func (r BoardRepository) Update(dto dto.CreateBoard, uuid string) {
 	board := model.Board{
