@@ -1,5 +1,7 @@
 package model
 
+import "github.com/lib/pq"
+
 type Item struct {
 	ItemUUID string `gorm:"primaryKey;type:uuid"`
 
@@ -8,13 +10,13 @@ type Item struct {
 	Name        string `gorm:"default:null"`
 	Description string `gorm:"default:null"`
 	Quantity    int
-	Tags        []string `gorm:"type:text[]"`
+	Tags        pq.StringArray `gorm:"type:text[]"`
 	Picture     string
 	Barcode     string
-	Fields      []string `gorm:"type:text[]"`
+	Fields      pq.StringArray `gorm:"type:text[]"`
 
-	Parents  []Item `gorm:"many2many:item_associations;joinForeignKey:ChildUUID;joinReferences:ParentUUID"`
-	Children []Item `gorm:"many2many:item_associations;joinForeignKey:ParentUUID;joinReferences:ChildUUID"`
+	Parents  []*Item `gorm:"many2many:item_associations;joinForeignKey:ChildUUID;joinReferences:ParentUUID"`
+	Children []*Item `gorm:"many2many:item_associations;joinForeignKey:ParentUUID;joinReferences:ChildUUID"`
 }
 
 type ItemAssociation struct {

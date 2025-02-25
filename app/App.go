@@ -59,6 +59,8 @@ func SetRoutes(router *mux.Router) {
 		}
 		tmpl.Execute(w, nil)
 	})
-	router.HandleFunc("/api/boards", api.GetAllBoards)
-	router.HandleFunc("/api/{board_uuid}", api.GetAllItemsByBoard)
+	router.HandleFunc("/api/boards", api.GetAllBoards).Methods("GET")
+	router.HandleFunc("/api/boards/{board_uuid}", api.GetAllItemsByBoard).Methods("GET")
+	router.HandleFunc("/api/items/{item_uuid}", api.GetItem).Methods("GET")
+	router.HandleFunc("/api/items/", api.CreateItem).Methods("POST")
 }

@@ -13,10 +13,11 @@ func InitData() {
 		ThemeUUID: "f6e09753-03d4-4820-beff-6d713298589c",
 		Name:      "name",
 	}
-	boardUUID := boardRepository.Create(boardDTO)
+	boardUUID, _ := boardRepository.Create(boardDTO)
 	itemDTO1 := dto.CreateItem{
-		ParentUUID:  "",
 		BoardUUID:   boardUUID,
+		ParentUUIDs: nil,
+		ChildUUIDs:  nil,
 		Name:        "name1",
 		Description: "description",
 		Quantity:    0,
@@ -26,10 +27,11 @@ func InitData() {
 		Fields:      nil,
 	}
 
-	item1UUID := itemRepository.Create(itemDTO1)
+	item1UUID, _ := itemRepository.Create(itemDTO1)
 	itemDTO2 := dto.CreateItem{
-		ParentUUID:  item1UUID,
 		BoardUUID:   boardUUID,
+		ParentUUIDs: []string{item1UUID},
+		ChildUUIDs:  nil,
 		Name:        "name2",
 		Description: "description",
 		Quantity:    0,
@@ -38,16 +40,29 @@ func InitData() {
 		Barcode:     "",
 		Fields:      nil,
 	}
-	item2UUID := itemRepository.Create(itemDTO2)
+	item2UUID, _ := itemRepository.Create(itemDTO2)
 	itemDTO3 := dto.CreateItem{
-		ParentUUID:  item2UUID,
 		BoardUUID:   boardUUID,
+		ParentUUIDs: []string{item2UUID},
+		ChildUUIDs:  []string{item1UUID},
 		Name:        "name3",
 		Description: "description",
 		Quantity:    0,
 		Tags:        nil,
 		Picture:     "",
+		Barcode:     "",
+		Fields:      nil,
 	}
 	itemRepository.Create(itemDTO3)
-
+	itemDTO4 := dto.CreateItem{
+		BoardUUID:   boardUUID,
+		Name:        "name4",
+		Description: "description",
+		Quantity:    0,
+		Tags:        nil,
+		Picture:     "",
+		Barcode:     "",
+		Fields:      nil,
+	}
+	itemRepository.Create(itemDTO4)
 }

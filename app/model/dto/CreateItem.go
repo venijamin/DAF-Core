@@ -1,9 +1,9 @@
 package dto
 
 type CreateItem struct {
-	ParentUUID string `json:"parent_uuid"`
-
-	BoardUUID string `json:"board_uuid"`
+	BoardUUID   string   `json:"board_uuid"`
+	ParentUUIDs []string `json:"parent_uuids"`
+	ChildUUIDs  []string `json:"child_uuids"`
 
 	Name        string   `json:"name"`
 	Description string   `json:"description"`
