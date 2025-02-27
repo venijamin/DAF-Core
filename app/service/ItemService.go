@@ -46,6 +46,7 @@ func (s *ItemService) Create(dto dto.CreateItem) (string, error) {
 	_, err := itemRepository.Create(item, dto.ParentUUIDs, dto.ChildUUIDs)
 	if err != nil {
 		log.Printf("Failed to create item %s: %v", item.ItemUUID, err)
+		return "", err
 	}
 
 	return item.ItemUUID, nil
