@@ -2,12 +2,11 @@ package repository
 
 import (
 	"DAF-Core/app/model"
-	"DAF-Core/app/model/dto"
 	"DAF-Core/app/util"
 	"errors"
 	"fmt"
-	"github.com/google/uuid"
 	"gorm.io/gorm"
+	"time"
 )
 
 type BoardRepository struct{}
@@ -48,24 +47,13 @@ func (r BoardRepository) Get(uuid string) (*model.Board, error) {
 	return &board, nil
 }
 
-func (r BoardRepository) Create(dto dto.CreateBoard) (string, error) {
-	// Validate input
-	if dto.Name == "" {
-		return "", fmt.Errorf("board name cannot be empty")
-	}
-
-	// Generate UUID
-	boardUUID := uuid.New().String()
-
-	// Create board object
-	board := model.Board{
-		BoardUUID: boardUUID,
-		ThemeUUID: dto.ThemeUUID,
-		Name:      dto.Name,
-	}
-
+func (r BoardRepository) Create(board model.Board) (string, error) {
 	// Save to database
 	db := util.GetMainDB()
+
+	board.DateCreated = time.Now().String()
+	board.DateLastModified = time.Now().String()
+
 	result := db.Create(&board)
 	if result.Error != nil {
 		return "", fmt.Errorf("failed to create board: %w", result.Error)
@@ -76,20 +64,13 @@ func (r BoardRepository) Create(dto dto.CreateBoard) (string, error) {
 		return "", fmt.Errorf("board was not created, no rows affected")
 	}
 
-	return boardUUID, nil
+	return board.BoardUUID, nil
 }
 
-func (r BoardRepository) Update(dto dto.CreateBoard, uuid string) error {
-	// Validate input
-	if uuid == "" {
-		return fmt.Errorf("board UUID cannot be empty")
-	}
-
-	if dto.Name == "" {
-		return fmt.Errorf("board name cannot be empty")
-	}
-
+func (r BoardRepository) Update(board model.Board, uuid string) error {
 	db := util.GetMainDB()
+
+	board.DateLastModified = time.Now().String()
 
 	// Check if board exists
 	var existingBoard model.Board
@@ -102,8 +83,8 @@ func (r BoardRepository) Update(dto dto.CreateBoard, uuid string) error {
 	}
 
 	// Update board fields
-	existingBoard.ThemeUUID = dto.ThemeUUID
-	existingBoard.Name = dto.Name
+	existingBoard.ThemeUUID = board.ThemeUUID
+	existingBoard.Name = board.Name
 
 	// Save updated board
 	result = db.Save(&existingBoard)

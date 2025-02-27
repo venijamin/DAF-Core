@@ -2,12 +2,11 @@ package repository
 
 import (
 	"DAF-Core/app/model"
-	"DAF-Core/app/model/dto"
 	"DAF-Core/app/util"
 	"errors"
 	"fmt"
-	"github.com/google/uuid"
 	"gorm.io/gorm"
+	"time"
 )
 
 type ItemRepository struct{}
@@ -98,20 +97,11 @@ func (r ItemRepository) Delete(uuid string) error {
 
 	return nil
 }
-
-func (r ItemRepository) Create(dto dto.CreateItem) (string, error) {
+func (r ItemRepository) Create(item model.Item, parentUUIDs []string, childUUIDs []string) (string, error) {
 	db := util.GetMainDB()
-	item := model.Item{
-		ItemUUID:    uuid.NewString(),
-		BoardUUID:   dto.BoardUUID,
-		Name:        dto.Name,
-		Description: dto.Description,
-		Quantity:    dto.Quantity,
-		Tags:        dto.Tags,
-		Picture:     dto.Picture,
-		Barcode:     dto.Barcode,
-		Fields:      dto.Fields,
-	}
+
+	item.DateCreated = time.Now().String()
+	item.DateLastModified = time.Now().String()
 
 	return item.ItemUUID, db.Transaction(func(tx *gorm.DB) error {
 		// Create main item
@@ -120,12 +110,12 @@ func (r ItemRepository) Create(dto dto.CreateItem) (string, error) {
 		}
 
 		// Handle parent relationships
-		if len(dto.ParentUUIDs) > 0 {
+		if len(parentUUIDs) > 0 {
 			var parents []*model.Item
-			if err := tx.Where("item_uuid IN ?", dto.ParentUUIDs).Find(&parents).Error; err != nil {
+			if err := tx.Where("item_uuid IN ?", parentUUIDs).Find(&parents).Error; err != nil {
 				return err
 			}
-			if len(parents) != len(dto.ParentUUIDs) {
+			if len(parents) != len(parentUUIDs) {
 				return fmt.Errorf("some parent items not found")
 			}
 			if err := tx.Model(&item).Association("Parents").Append(parents); err != nil {
@@ -134,12 +124,54 @@ func (r ItemRepository) Create(dto dto.CreateItem) (string, error) {
 		}
 
 		// Handle child relationships
-		if len(dto.ChildUUIDs) > 0 {
+		if len(childUUIDs) > 0 {
 			var children []*model.Item
-			if err := tx.Where("item_uuid IN ?", dto.ChildUUIDs).Find(&children).Error; err != nil {
+			if err := tx.Where("item_uuid IN ?", childUUIDs).Find(&children).Error; err != nil {
 				return err
 			}
-			if len(children) != len(dto.ChildUUIDs) {
+			if len(children) != len(childUUIDs) {
+				return fmt.Errorf("some child items not found")
+			}
+			if err := tx.Model(&item).Association("Children").Append(children); err != nil {
+				return err
+			}
+		}
+
+		return nil
+	})
+}
+func (r ItemRepository) Update(item model.Item, parentUUIDs []string, childUUIDs []string) (string, error) {
+	db := util.GetMainDB()
+
+	item.DateLastModified = time.Now().String()
+
+	return item.ItemUUID, db.Transaction(func(tx *gorm.DB) error {
+		// Create main item
+		if err := tx.Save(&item).Error; err != nil {
+			return err
+		}
+
+		// Handle parent relationships
+		if len(parentUUIDs) > 0 {
+			var parents []*model.Item
+			if err := tx.Where("item_uuid IN ?", parentUUIDs).Find(&parents).Error; err != nil {
+				return err
+			}
+			if len(parents) != len(parentUUIDs) {
+				return fmt.Errorf("some parent items not found")
+			}
+			if err := tx.Model(&item).Association("Parents").Append(parents); err != nil {
+				return err
+			}
+		}
+
+		// Handle child relationships
+		if len(childUUIDs) > 0 {
+			var children []*model.Item
+			if err := tx.Where("item_uuid IN ?", childUUIDs).Find(&children).Error; err != nil {
+				return err
+			}
+			if len(children) != len(childUUIDs) {
 				return fmt.Errorf("some child items not found")
 			}
 			if err := tx.Model(&item).Association("Children").Append(children); err != nil {

@@ -12,11 +12,10 @@ import (
 
 func main() {
 	util.ConnectToDB()         // Establish database connection
-	router := mux.NewRouter()  // Create a router
+	router := mux.NewRouter()  // CreateBoard a router
 	SetRoutes(router)          // Set the HTTP routes
 	corsRouter := CORS(router) // Wrap the router with CORS middleware
 
-	InitData()
 	// Start the server
 	log.Fatal(http.ListenAndServe(":8080", corsRouter))
 
@@ -39,7 +38,7 @@ func CORS(next http.Handler) http.Handler {
 }
 
 func SetRoutes(router *mux.Router) {
-	// Create a new router
+	// CreateBoard a new router
 	router.PathPrefix("/src/").HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if strings.HasSuffix(r.URL.Path, ".css") {
 			// Set the correct MIME type for CSS files
@@ -59,8 +58,12 @@ func SetRoutes(router *mux.Router) {
 		}
 		tmpl.Execute(w, nil)
 	})
-	router.HandleFunc("/api/boards", api.GetAllBoards).Methods("GET")
+	router.HandleFunc("/api/boards/", api.GetAllBoards).Methods("GET")
+	router.HandleFunc("/api/boards/{board_uuid}", api.DeleteBoard).Methods("DELETE")
+	router.HandleFunc("/api/boards/", api.CreateBoard).Methods("POST")
+
 	router.HandleFunc("/api/boards/{board_uuid}", api.GetAllItemsByBoard).Methods("GET")
+
 	router.HandleFunc("/api/items/{item_uuid}", api.GetItem).Methods("GET")
 	router.HandleFunc("/api/items/", api.CreateItem).Methods("POST")
 }

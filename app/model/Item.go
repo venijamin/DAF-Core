@@ -7,13 +7,15 @@ type Item struct {
 
 	BoardUUID string `gorm:"type:uuid"`
 
-	Name        string `gorm:"default:null"`
-	Description string `gorm:"default:null"`
-	Quantity    int
-	Tags        pq.StringArray `gorm:"type:text[]"`
-	Picture     string
-	Barcode     string
-	Fields      pq.StringArray `gorm:"type:text[]"`
+	Name             string `gorm:"default:null"`
+	Description      string `gorm:"default:null"`
+	Quantity         int
+	Tags             pq.StringArray `gorm:"type:text[]"`
+	Picture          string
+	Barcode          string
+	Fields           pq.StringArray `gorm:"type:text[]"`
+	DateCreated      string
+	DateLastModified string
 
 	Parents  []*Item `gorm:"many2many:item_associations;joinForeignKey:ChildUUID;joinReferences:ParentUUID"`
 	Children []*Item `gorm:"many2many:item_associations;joinForeignKey:ParentUUID;joinReferences:ChildUUID"`

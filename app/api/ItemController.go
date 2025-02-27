@@ -2,11 +2,9 @@ package api
 
 import (
 	"DAF-Core/app/model/dto"
-	"DAF-Core/app/repository"
 	"DAF-Core/app/service"
 	"encoding/json"
 	"github.com/gorilla/mux"
-	"log"
 	"net/http"
 )
 
@@ -61,14 +59,12 @@ func CreateItem(w http.ResponseWriter, r *http.Request) {
 
 	json.NewDecoder(r.Body).Decode(&itemDTO)
 
-	item, err := itemService.Create(itemDTO)
+	_, err := itemService.Create(itemDTO)
 	if err != nil {
-		log.Printf("Failed to create item in repository: %v", err)
 		http.Error(w, `{"error": "Creation failed"}`, http.StatusInternalServerError)
 		return
 	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode(item)
 }

@@ -6,7 +6,10 @@ type Board struct {
 	ThemeUUID string `gorm:"type:uuid"`
 	Theme     Theme  `gorm:"foreignKey:ThemeUUID;references:ThemeUUID"`
 
-	Items []Item `gorm:"foreignKey:BoardUUID;references:BoardUUID;default:null"`
+	Items []Item `gorm:"foreignKey:BoardUUID;references:BoardUUID"`
 
 	Name string
+
+	DateCreated      string
+	DateLastModified string
 }

@@ -41,6 +41,8 @@ func migrateSchemaMainDB() {
 	if err != nil {
 		log.Fatalf("failed to migrate schema: %v", err)
 	}
+	mainDB.Exec("ALTER TABLE items ADD CONSTRAINT fk_board_items FOREIGN KEY (board_uuid) REFERENCES boards(board_uuid) ON DELETE CASCADE")
+
 }
 
 func openConnection(connectionString string) *gorm.DB {
