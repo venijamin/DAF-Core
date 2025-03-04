@@ -26,10 +26,10 @@ func CORS(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
-		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization, HX-Request, HX-Trigger, HX-Target, HX-Current-URL")
 
-		// Handle preflight OPTIONS request
 		if r.Method == http.MethodOptions {
+			w.WriteHeader(http.StatusOK)
 			return
 		}
 
@@ -51,7 +51,7 @@ func SetRoutes(router *mux.Router) {
 		}
 	})
 	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		tmpl, err := template.ParseFiles("src/index.html")
+		tmpl, err := template.ParseFiles("app/src/index.html")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
