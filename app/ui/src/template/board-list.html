@@ -1,0 +1,12 @@
+{{define "boardList"}}
+<ul>
+  {{range .}}
+    <li id="board-{{.BoardUUID}}">
+      <a href="/api/boards/{{.BoardUUID}}">
+        {{.Name}}
+      </a>
+      <button hx-delete="/api/boards/{{.BoardUUID}}" hx-target="#board-{{.BoardUUID}}" hx-swap="outerHTML">Delete</button>
+    </li>
+  {{end}}
+</ul>
+{{end}}

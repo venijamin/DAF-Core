@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
+	"html/template"
 	"log"
 	"net/http"
 )
@@ -14,6 +15,9 @@ import (
 var boardService service.BoardService
 
 func GetAllBoards(w http.ResponseWriter, r *http.Request) {
+	var boardListTemplate *template.Template
+	boardListTemplate = template.Must(template.ParseFiles("app/src/template/board-list.html"))
+
 	data, err := boardService.GetAll()
 	if err != nil {
 		http.Error(w, `{"error": "Failed to retrieve boards"}`, http.StatusInternalServerError)
@@ -22,7 +26,10 @@ func GetAllBoards(w http.ResponseWriter, r *http.Request) {
 
 	if r.Header.Get("HX-Request") == "true" {
 		w.Header().Set("Content-Type", "text/html")
-		renderBoardList(w, *data)
+		err = boardListTemplate.ExecuteTemplate(w, "boardList", data)
+		if err != nil {
+			http.Error(w, "Failed to renderer template", http.StatusInternalServerError)
+		}
 	} else {
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(data)
@@ -33,11 +40,13 @@ func renderBoardList(w http.ResponseWriter, boards []model.Board) {
 	w.Write([]byte("<ul>"))
 	for _, board := range boards {
 		w.Write([]byte(fmt.Sprintf(
-			`<li id="board-%s">
+			`<a href=/api/boards/%s>
+				<li id="board-%s">
                 %s
-                <button hx-delete="/boards/%s" hx-target="#board-%s" hx-swap="outerHTML">Delete</button>
-            </li>`,
-			board.BoardUUID, board.Name, board.BoardUUID, board.BoardUUID)))
+                <button hx-delete="/api/boards/%s" hx-target="#board-%s" hx-swap="outerHTML">Delete</button>
+            	</li>
+				</a>`,
+			board.BoardUUID, board.BoardUUID, board.Name, board.BoardUUID, board.BoardUUID)))
 	}
 	w.Write([]byte("</ul>"))
 }
@@ -61,15 +70,17 @@ func DeleteBoard(w http.ResponseWriter, r *http.Request) {
 	}
 
 	log.Println("Board deleted successfully")
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
 	if r.Header.Get("HX-Request") == "true" {
-		w.WriteHeader(http.StatusOK)
-		// Return empty response to remove the element
+		// Return an empty JSON object for HTMX requests
+		w.Write([]byte(`{}`))
 	} else {
-		w.WriteHeader(http.StatusOK)
-		w.Header().Set("Content-Type", "application/json")
-		w.Write([]byte(`{"message": "Board deleted successfully"}`))
+		json.NewEncoder(w).Encode(map[string]string{"message": "Board deleted successfully"})
 	}
 }
+
 func CreateBoard(w http.ResponseWriter, r *http.Request) {
 	var boardDTO dto.CreateBoard
 	err := json.NewDecoder(r.Body).Decode(&boardDTO)
@@ -84,17 +95,8 @@ func CreateBoard(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if r.Header.Get("HX-Request") == "true" {
-		w.Header().Set("Content-Type", "text/html")
-		w.Write([]byte(fmt.Sprintf(
-			`<li id="board-%s">
-                %s
-                <button hx-delete="/boards/%s" hx-target="#board-%s" hx-swap="outerHTML">Delete</button>
-            </li>`,
-			boardUUID, boardUUID, boardUUID, boardUUID, boardUUID)))
-	} else {
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(boardUUID)
-	}
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
+
+	json.NewEncoder(w).Encode(boardUUID)
 }

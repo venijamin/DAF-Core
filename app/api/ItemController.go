@@ -5,6 +5,7 @@ import (
 	"DAF-Core/app/service"
 	"encoding/json"
 	"github.com/gorilla/mux"
+	"html/template"
 	"net/http"
 )
 
@@ -29,6 +30,28 @@ func GetAllItemsByBoard(w http.ResponseWriter, r *http.Request) {
 	// Set response headers and encode response
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(data)
+}
+
+func RenderBoardView(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	boardUUID := vars["board_uuid"]
+
+	board, err := boardService.Get(boardUUID)
+	if err != nil {
+		http.Error(w, "Board not found", http.StatusNotFound)
+		return
+	}
+
+	data := struct {
+		BoardUUID string
+		BoardName string
+	}{
+		BoardUUID: board.BoardUUID,
+		BoardName: board.Name,
+	}
+
+	tmpl := template.Must(template.ParseFiles("app/src/board-view.html"))
+	tmpl.ExecuteTemplate(w, "boardView", data)
 }
 
 func GetItem(w http.ResponseWriter, r *http.Request) {

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board Management</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .board-item { border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; }
+        .item-list { margin-left: 20px; }
+    </style>
+</head>
+<body>
+<h1>Board Management</h1>
+
+<div id="board-list" hx-get="/api/boards/" hx-trigger="load">
+    Loading boards...
+</div>
+
+<form hx-post="/api/boards/"
+      hx-target="#board-list"
+      hx-swap="innerHTML"
+      hx-headers='{"Content-Type": "application/json"}'
+      hx-trigger="submit"
+      hx-ext="json-enc">
+    <input type="text" name="name" placeholder="New board name" required>
+    <input type="text" name="ThemeUUID" placeholder="Theme UUID">
+    <button type="submit">Add Board</button>
+</form>
+</body>
+</html>
